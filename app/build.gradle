@@ -16,10 +16,10 @@ android {
 			//由于本地打包使用的是本机上的KeyStore
 			//而Jenkins打包用的是服务器上的KeyStore
 			//两个路径不一样
-			storeFile file(STORE_FILE_PATH)
-			keyAlias KEY_ALIAS
-			keyPassword KEY_PASSWORD
-			storePassword STORE_FILE_PASSWORD
+			storeFile file('../test.jks')
+			storePassword project.hasProperty("KEYSTORE_PASS") ? KEYSTORE_PASS : System.getenv("KEYSTORE_PASS")
+			keyAlias project.hasProperty("ALIAS_NAME") ? ALIAS_NAME : System.getenv("ALIAS_NAME")
+			keyPassword project.hasProperty("ALIAS_PASS") ? ALIAS_PASS : System.getenv("ALIAS_PASS")
 		}
 	}
 

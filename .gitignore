@@ -4,7 +4,8 @@
 .idea
 .externalNativeBuild
 
-
+test.jks
+gradle.properties
 /local.properties
 /app/build
 /build

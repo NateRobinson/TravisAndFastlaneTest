@@ -10,11 +10,30 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+	signingConfigs {
+		signingConfig {
+			//由于本地打包使用的是本机上的KeyStore
+			//而Jenkins打包用的是服务器上的KeyStore
+			//两个路径不一样
+			storeFile file(STORE_FILE_PATH)
+			keyAlias KEY_ALIAS
+			keyPassword KEY_PASSWORD
+			storePassword STORE_FILE_PASSWORD
+		}
+	}
+
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+		release {
+			minifyEnabled true
+			zipAlignEnabled true
+			shrinkResources true
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			signingConfig signingConfigs.signingConfig
+		}
+		debug {
+
+		}
     }
 }
 

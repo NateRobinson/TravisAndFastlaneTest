@@ -11,3 +11,12 @@ script:
 before_install:
 - openssl aes-256-cbc -K $encrypted_7e2b127645c1_key -iv $encrypted_7e2b127645c1_iv
   -in test.jks.enc -out test.jks -d
+deploy:
+  provider: releases
+  api_key:
+    secure: bOy7pRLVhUsDtOopzFOWOdlKrqEiePM++a0lNoq+nnapaXwU8d3BjRIiPv9/pTrHW1a8D0YzQxndwDE83k56gTnJCg9UQJz7mEwhUHmyARmNqpl05lW1s0h8kOZHZr3qK10zAHrRr+1/29bPSS1bOW55eMelMSeax2cDaJvFlGxoG2SOaLy6B9QP/ixB5EtTF77tXIEt02L4EUXtWzUPWjEfbxIVed0O/mlL9A2uhgPjfsZFgYrYZUKW+Z5DWXeveISN3BfO9rds4hm9aWFBjpM+pTqeQdKPgcMek8oGpyWSyVg0hzpUh3Yh2/AOXFKlJOTiK8dbhkckodD5RoeaWQz8bHEMWrsmoW21IyUt068KqXaP2kbawTli1Oi7e1jpf1XDII6YpjI8MqvGRqVZ8VpCJ/JQ88zrOZl/cM9NGJYwpTgsx5z6qn/ybmIVdJI8lgrMBfHw/cWgIQABclOSweJexZsHgFA2jn7HlO4y+PWAGclrHlV7ZxaSlX4Xjk6mhxoUW/u89eTa2HEdErV2ZkKD7tbQyYFlcig8oi/XyDh+FRzPAzVLQ+t4/0xz/eFs1lNlyEsZeUM1hHNZBFDWhDu2jar5YKT27e6wSr182BoRpX5DcuPh7vzV8kThMwbJ1nLLpiY1YUtVgq/vAM00p8yGb/j4Ch1hsbrrP7IyomI=
+  file: app/build/outputs/apk/app-release.apk
+  skip_cleanup: true
+  on:
+    repo: NateRobinson/TravisAndFastlaneTest
+    tags: true

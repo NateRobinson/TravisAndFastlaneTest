@@ -8,6 +8,8 @@ test.jks
 gradle.properties
 /local.properties
 /app/build
+/natelibraryone/build
+/notelibrarytwo/build
 /build
 /captures
 
